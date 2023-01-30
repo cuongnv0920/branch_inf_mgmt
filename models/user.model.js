@@ -61,12 +61,10 @@ const userSchema = new Schema({
     default: true,
   },
 
-  roles: [
-    {
-      type: String,
-      default: "user",
-    },
-  ],
+  role: {
+    type: String,
+    default: "user",
+  },
 
   softDelete: {
     type: Date,
