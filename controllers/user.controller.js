@@ -11,7 +11,7 @@ User.exists({ email: defaultUser.email }).then((user) => {
       username: defaultUser.username,
       fullName: defaultUser.fullName,
       password: md5(defaultUser.password),
-      roles: defaultUser.role,
+      role: defaultUser.role,
       createdAt: Date.now(),
     });
   }
@@ -40,7 +40,7 @@ function formatUser(data) {
     ext,
     level,
     sex,
-    roles,
+    role,
     birthday,
     createdAt,
   } = data;
@@ -53,7 +53,7 @@ function formatUser(data) {
     ext,
     level,
     sex,
-    roles,
+    role,
     birthday,
     createdAt,
   };
@@ -120,7 +120,7 @@ module.exports.create = async (req, res, next) => {
       phone: req.body.phone,
       ext: req.body?.ext,
       sex: req.body.sex,
-      roles: req.body.role,
+      role: req.body.role,
       birthday: new Date(req.body.birthday),
       createdAt: Date.now(),
     })
@@ -173,7 +173,7 @@ module.exports.update = async (req, res, next) => {
         phone: req.body.phone,
         ext: req.body?.ext,
         sex: req.body.sex,
-        roles: req.body.role,
+        role: req.body.role,
         birthday: new Date(req.body.birthday),
         updatedAt: Date.now(),
       }

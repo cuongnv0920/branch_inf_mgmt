@@ -39,8 +39,6 @@ module.exports.loginAdmin = async (req, res, next) => {
     $or: [{ username: username }, { email: email }],
   });
 
-  const checkRole = user[0]?.roles.filter((role) => role === "admin");
-
   if (!user[0]) {
     return res
       .status(400)
@@ -53,7 +51,7 @@ module.exports.loginAdmin = async (req, res, next) => {
       .json({ message: "Mật khẩu không đúng, vui lòng kiểm tra lại." });
   }
 
-  if (checkRole.length <= 0) {
+  if (user[0].role !== "admin") {
     return res.status(400).json({ message: "Bạn không có quyền truy cập." });
   }
 
